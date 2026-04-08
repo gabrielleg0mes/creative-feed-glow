@@ -75,7 +75,7 @@
   }
 
   .glow-shadow {
-    box-shadow: 0 0 30px -5px hsl(var(--glow-primary));
+    box-shadow: 0 0 40px 0px hsl(289 70% 45% / 0.6), 0 0 80px 5px hsl(289 70% 40% / 0.3);
   }
 
   .section-spacing {
@@ -98,10 +98,10 @@
 
   @keyframes pulseGlow {
     0%, 100% {
-      box-shadow: 0 0 20px -5px hsl(289 70% 33% / 0.5);
+      box-shadow: 0 0 40px 0px hsl(289 70% 45% / 0.6), 0 0 80px 5px hsl(289 70% 40% / 0.3);
     }
     50% {
-      box-shadow: 0 0 35px -5px hsl(289 70% 33% / 0.8);
+      box-shadow: 0 0 60px 5px hsl(289 70% 50% / 0.8), 0 0 100px 10px hsl(289 70% 45% / 0.4);
     }
   }
 
