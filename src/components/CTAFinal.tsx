@@ -15,7 +15,7 @@ const CTAFinal = () => {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 hover:scale-[1.03] glow-shadow"
         >
-          Falar com a especialista
+          Entrar em contato
           <ArrowRight className="w-5 h-5" />
         </a>
       </div>
