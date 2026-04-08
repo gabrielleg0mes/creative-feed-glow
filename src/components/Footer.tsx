@@ -9,7 +9,7 @@ const Footer = () => {
           começar.
         </p>
         <a
-          href="https://wa.me/seunumero"
+          href="https://wa.me/5588921745781"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 hover:scale-[1.03] glow-shadow"
