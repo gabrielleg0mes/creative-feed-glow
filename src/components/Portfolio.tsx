@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import beautyPost from "@/assets/portfolio/beauty-post.jpg";
 import beautyStory1 from "@/assets/portfolio/beauty-story1.jpg";
 import beautyStory2 from "@/assets/portfolio/beauty-story2.jpg";
@@ -43,6 +46,8 @@ const niches = [
 ];
 
 const Portfolio = () => {
+  const [modalImage, setModalImage] = useState<string | null>(null);
+
   return (
     <section className="section-spacing relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
@@ -71,26 +76,30 @@ const Portfolio = () => {
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-end">
-                {/* Post - larger */}
-                <div className="col-span-2 rounded-2xl overflow-hidden border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 group">
+                {/* Post */}
+                <div
+                  className="col-span-2 rounded-2xl overflow-hidden border border-border/60 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 cursor-pointer group"
+                  onClick={() => setModalImage(niche.post)}
+                >
                   <img
                     src={niche.post}
                     alt={`Post ${niche.name}`}
                     loading="lazy"
-                    className="w-full aspect-square object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                    className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
                 {/* Stories */}
                 {niche.stories.map((story, j) => (
                   <div
                     key={j}
-                    className="rounded-2xl overflow-hidden border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 group"
+                    className="rounded-2xl overflow-hidden border border-border/60 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 cursor-pointer group"
+                    onClick={() => setModalImage(story)}
                   >
                     <img
                       src={story}
                       alt={`Story ${niche.name} ${j + 1}`}
                       loading="lazy"
-                      className="w-full aspect-[9/16] object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                      className="w-full aspect-[9/16] object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
                 ))}
@@ -99,6 +108,22 @@ const Portfolio = () => {
           ))}
         </div>
       </div>
+
+      {/* Modal */}
+      <Dialog open={!!modalImage} onOpenChange={() => setModalImage(null)}>
+        <DialogContent className="max-w-3xl p-2 bg-background/95 backdrop-blur-md border-border/50">
+          <VisuallyHidden>
+            <DialogTitle>Imagem do portfólio</DialogTitle>
+          </VisuallyHidden>
+          {modalImage && (
+            <img
+              src={modalImage}
+              alt="Portfolio"
+              className="w-full h-auto rounded-xl"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

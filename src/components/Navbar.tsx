@@ -9,7 +9,7 @@ const Navbar = () => {
           href="https://wa.me/5588921745781"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-primary text-primary-foreground px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-[1.03] glow-shadow"
+          className="bg-primary text-primary-foreground px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95 glow-shadow"
         >
           Falar no WhatsApp
         </a>
