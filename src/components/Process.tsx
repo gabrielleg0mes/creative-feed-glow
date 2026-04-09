@@ -18,7 +18,7 @@ const Process = () => {
           {steps.map((step, i) => (
             <div
               key={i}
-              className="bg-card rounded-2xl p-8 flex items-start gap-4 animate-fade-in border border-border/60 shadow-sm hover:border-primary/30 hover:shadow-md transition-all duration-300 group"
+              className="bg-card rounded-2xl p-8 flex items-center gap-4 animate-fade-in border border-border/60 shadow-sm hover:border-primary/30 hover:shadow-md transition-all duration-300 group"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -26,7 +26,7 @@ const Process = () => {
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
-              <span className="text-foreground font-medium pt-2">{step}</span>
+              <span className="text-foreground font-medium">{step}</span>
             </div>
           ))}
         </div>
