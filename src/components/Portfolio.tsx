@@ -44,8 +44,10 @@ const niches = [
 
 const Portfolio = () => {
   return (
-    <section className="section-spacing">
-      <div className="container mx-auto max-w-6xl">
+    <section className="section-spacing relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <div className="section-divider mb-6" />
         <h2 className="text-2xl md:text-4xl font-bold text-center mb-4">
           <span className="text-gradient">Portfólio</span>
         </h2>
@@ -55,38 +57,40 @@ const Portfolio = () => {
           negócio.
         </p>
 
-        <div className="space-y-16">
+        <div className="space-y-20">
           {niches.map((niche, i) => (
             <div key={i} className="animate-fade-in" style={{ animationDelay: `${i * 0.1}s` }}>
-              <h3 className="text-lg font-semibold mb-1">
-                {niche.label}{" "}
-                <span className="text-muted-foreground font-normal">
-                  — {niche.name}
-                </span>
-              </h3>
-              <p className="text-sm text-muted-foreground mb-6">{niche.caption}</p>
+              <div className="mb-6">
+                <h3 className="text-xl font-bold mb-1">
+                  {niche.label}{" "}
+                  <span className="text-muted-foreground font-normal text-base">
+                    — {niche.name}
+                  </span>
+                </h3>
+                <p className="text-sm text-muted-foreground">{niche.caption}</p>
+              </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-end">
                 {/* Post - larger */}
-                <div className="col-span-2 glass-card rounded-xl overflow-hidden hover-card-effect">
+                <div className="col-span-2 rounded-2xl overflow-hidden border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 group">
                   <img
                     src={niche.post}
                     alt={`Post ${niche.name}`}
                     loading="lazy"
-                    className="w-full aspect-square object-cover"
+                    className="w-full aspect-square object-cover group-hover:scale-[1.02] transition-transform duration-500"
                   />
                 </div>
                 {/* Stories */}
                 {niche.stories.map((story, j) => (
                   <div
                     key={j}
-                    className="glass-card rounded-xl overflow-hidden hover-card-effect"
+                    className="rounded-2xl overflow-hidden border border-border hover:border-primary/30 hover:shadow-xl transition-all duration-300 group"
                   >
                     <img
                       src={story}
                       alt={`Story ${niche.name} ${j + 1}`}
                       loading="lazy"
-                      className="w-full aspect-[9/16] object-cover"
+                      className="w-full aspect-[9/16] object-cover group-hover:scale-[1.02] transition-transform duration-500"
                     />
                   </div>
                 ))}

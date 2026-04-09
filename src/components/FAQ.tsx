@@ -40,6 +40,7 @@ const FAQ = () => {
   return (
     <section className="section-spacing">
       <div className="container mx-auto max-w-3xl">
+        <div className="section-divider mb-6" />
         <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">
           Dúvidas <span className="text-gradient">frequentes</span>
         </h2>
@@ -48,7 +49,7 @@ const FAQ = () => {
             <AccordionItem
               key={i}
               value={`faq-${i}`}
-              className="glass-card rounded-xl border-border px-6 overflow-hidden"
+              className="bg-card rounded-2xl border border-border px-6 overflow-hidden hover:border-primary/30 transition-colors"
             >
               <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary transition-colors py-5">
                 {faq.q}

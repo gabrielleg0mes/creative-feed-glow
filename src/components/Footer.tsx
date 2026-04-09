@@ -20,12 +20,12 @@ const Footer = () => {
         <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm pt-4">
           <Instagram className="w-4 h-4" />
           <a
-            href="https://instagram.com/gabrielle.g0mes"
+            href="https://instagram.com/ggsocialstudio"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-primary transition-colors"
           >
-            @gabrielle.g0mes
+            @ggsocialstudio
           </a>
         </div>
         <p className="text-xs text-muted-foreground/60">

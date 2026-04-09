@@ -4,16 +4,17 @@ import logoFull from "@/assets/logo-full.png";
 const Hero = () => {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center section-spacing pt-32 text-center relative overflow-hidden">
-      {/* Glow background */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Decorative blobs */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 max-w-3xl mx-auto">
         <img
           src={logoFull}
           alt="GG Social Studio"
-          className="h-28 md:h-36 mx-auto mb-10 animate-fade-in"
+          className="h-36 md:h-44 mx-auto mb-10 animate-fade-in drop-shadow-md"
         />
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in text-foreground">
           Alcance resultados reais para sua marca no{" "}
           <span className="text-gradient">Instagram.</span>
         </h1>
