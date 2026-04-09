@@ -11,7 +11,7 @@ const Hero = () => {
         <img
           src={logoFull}
           alt="GG Social Studio"
-          className="h-36 md:h-44 mx-auto mb-10 animate-fade-in drop-shadow-md"
+          className="h-36 md:h-44 mx-auto mb-10 animate-fade-in"
         />
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in text-foreground">
           Alcance resultados reais para sua marca no{" "}
