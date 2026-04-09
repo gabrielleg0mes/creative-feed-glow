@@ -49,12 +49,12 @@ const FAQ = () => {
             <AccordionItem
               key={i}
               value={`faq-${i}`}
-              className="bg-card rounded-2xl border border-border px-6 overflow-hidden hover:border-primary/30 transition-colors"
+              className="bg-card rounded-2xl border border-border/60 shadow-sm px-8 overflow-hidden hover:border-primary/30 transition-colors"
             >
-              <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary transition-colors py-5">
+              <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary transition-colors py-6">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground pb-5">
+              <AccordionContent className="text-muted-foreground pb-6">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>

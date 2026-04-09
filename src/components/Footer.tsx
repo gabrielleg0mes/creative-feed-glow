@@ -12,9 +12,9 @@ const Footer = () => {
           href="https://wa.me/5588921745781"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 hover:scale-[1.03] glow-shadow"
+          className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl text-base font-semibold transition-all duration-300 hover:scale-105 active:scale-95 glow-shadow"
         >
-          <MessageCircle className="w-5 h-5" />
+          <MessageCircle className="w-4 h-4" />
           Falar no WhatsApp
         </a>
         <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm pt-4">
