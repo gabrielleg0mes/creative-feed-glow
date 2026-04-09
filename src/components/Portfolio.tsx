@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogClose } from "@/components/ui/dialog";
-import { X } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import beautyPost from "@/assets/portfolio/beauty-post.jpg";
 import beautyStory1 from "@/assets/portfolio/beauty-story1.jpg";
 import beautyStory2 from "@/assets/portfolio/beauty-story2.jpg";
@@ -124,16 +124,17 @@ const Portfolio = () => {
 
       {/* Modal */}
       <Dialog open={!!modal} onOpenChange={() => setModal(null)}>
-        <DialogContent className="max-w-2xl p-0 bg-card/95 backdrop-blur-xl border-border/50 overflow-hidden rounded-2xl gap-0 [&>button]:hidden">
+        <DialogContent className="max-w-2xl p-0 bg-primary/10 backdrop-blur-xl border-primary/20 overflow-hidden rounded-2xl gap-0 [&>button]:hidden">
           {modal && (
             <>
-              <DialogClose className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-foreground/80 text-background flex items-center justify-center hover:bg-foreground transition-colors">
-                <X className="w-5 h-5" />
+              <DialogClose className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors shadow-md">
+                <ArrowLeft className="w-4 h-4" />
+                Voltar
               </DialogClose>
               <img
                 src={modal.image}
                 alt={modal.title}
-                className="w-full max-h-[60vh] object-contain bg-muted"
+                className="w-full max-h-[60vh] object-contain bg-primary/5"
               />
               <div className="p-6 space-y-2">
                 <DialogTitle className="text-lg font-bold text-foreground">
