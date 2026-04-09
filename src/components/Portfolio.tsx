@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { Dialog, DialogContent, DialogTitle, DialogClose } from "@/components/ui/dialog";
+import { X } from "lucide-react";
 import beautyPost from "@/assets/portfolio/beauty-post.jpg";
 import beautyStory1 from "@/assets/portfolio/beauty-story1.jpg";
 import beautyStory2 from "@/assets/portfolio/beauty-story2.jpg";
@@ -14,6 +14,12 @@ import fitnessPost from "@/assets/portfolio/fitness-post.jpg";
 import fitnessStory1 from "@/assets/portfolio/fitness-story1.jpg";
 import fitnessStory2 from "@/assets/portfolio/fitness-story2.jpg";
 
+interface ModalData {
+  image: string;
+  title: string;
+  description: string;
+}
+
 const niches = [
   {
     label: "💄 Beleza",
@@ -21,6 +27,7 @@ const niches = [
     post: beautyPost,
     stories: [beautyStory1, beautyStory2],
     caption: "Posts que deixam seu perfil mais profissional",
+    description: "Identidade visual completa para o segmento de beleza — posts e stories com estética sofisticada, cores harmoniosas e tipografia elegante para transmitir confiança e atrair novas clientes.",
   },
   {
     label: "⚖️ Jurídico",
@@ -28,6 +35,7 @@ const niches = [
     post: legalPost,
     stories: [legalStory1, legalStory2],
     caption: "Design que organiza e valoriza seu feed",
+    description: "Comunicação visual séria e profissional para escritórios de advocacia — layouts limpos, paleta sóbria e tipografia que transmite autoridade e credibilidade no digital.",
   },
   {
     label: "🍔 Gastronomia",
@@ -35,6 +43,7 @@ const niches = [
     post: foodPost,
     stories: [foodStory1, foodStory2],
     caption: "Visual pensado para atrair clientes",
+    description: "Artes vibrantes e apetitosas para o ramo gastronômico — composições que destacam os produtos, despertam o desejo e aumentam o engajamento do perfil.",
   },
   {
     label: "🏋️ Academia",
@@ -42,11 +51,20 @@ const niches = [
     post: fitnessPost,
     stories: [fitnessStory1, fitnessStory2],
     caption: "Posts que deixam seu perfil mais profissional",
+    description: "Design energético e motivacional para academias e personal trainers — visuais impactantes com foco em resultados, movimento e estilo de vida saudável.",
   },
 ];
 
 const Portfolio = () => {
-  const [modalImage, setModalImage] = useState<string | null>(null);
+  const [modal, setModal] = useState<ModalData | null>(null);
+
+  const openModal = (image: string, niche: typeof niches[0], type: string) => {
+    setModal({
+      image,
+      title: `${niche.label} — ${niche.name}${type !== "Post" ? ` (${type})` : ""}`,
+      description: niche.description,
+    });
+  };
 
   return (
     <section className="section-spacing relative">
@@ -58,8 +76,7 @@ const Portfolio = () => {
         </h2>
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-14">
           Estes são alguns exemplos de design para esses nichos, mas desenvolvo
-          projetos para qualquer área, sempre adaptando ao perfil de cada
-          negócio.
+          projetos para qualquer área, sempre adaptando ao perfil de cada negócio.
         </p>
 
         <div className="space-y-20">
@@ -68,18 +85,15 @@ const Portfolio = () => {
               <div className="mb-6">
                 <h3 className="text-xl font-bold mb-1">
                   {niche.label}{" "}
-                  <span className="text-muted-foreground font-normal text-base">
-                    — {niche.name}
-                  </span>
+                  <span className="text-muted-foreground font-normal text-base">— {niche.name}</span>
                 </h3>
                 <p className="text-sm text-muted-foreground">{niche.caption}</p>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-end">
-                {/* Post */}
                 <div
                   className="col-span-2 rounded-2xl overflow-hidden border border-border/60 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 cursor-pointer group"
-                  onClick={() => setModalImage(niche.post)}
+                  onClick={() => openModal(niche.post, niche, "Post")}
                 >
                   <img
                     src={niche.post}
@@ -88,12 +102,11 @@ const Portfolio = () => {
                     className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                {/* Stories */}
                 {niche.stories.map((story, j) => (
                   <div
                     key={j}
                     className="rounded-2xl overflow-hidden border border-border/60 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 cursor-pointer group"
-                    onClick={() => setModalImage(story)}
+                    onClick={() => openModal(story, niche, `Story ${j + 1}`)}
                   >
                     <img
                       src={story}
@@ -110,17 +123,27 @@ const Portfolio = () => {
       </div>
 
       {/* Modal */}
-      <Dialog open={!!modalImage} onOpenChange={() => setModalImage(null)}>
-        <DialogContent className="max-w-3xl p-2 bg-background/95 backdrop-blur-md border-border/50">
-          <VisuallyHidden>
-            <DialogTitle>Imagem do portfólio</DialogTitle>
-          </VisuallyHidden>
-          {modalImage && (
-            <img
-              src={modalImage}
-              alt="Portfolio"
-              className="w-full h-auto rounded-xl"
-            />
+      <Dialog open={!!modal} onOpenChange={() => setModal(null)}>
+        <DialogContent className="max-w-2xl p-0 bg-card/95 backdrop-blur-xl border-border/50 overflow-hidden rounded-2xl gap-0 [&>button]:hidden">
+          {modal && (
+            <>
+              <DialogClose className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-foreground/80 text-background flex items-center justify-center hover:bg-foreground transition-colors">
+                <X className="w-5 h-5" />
+              </DialogClose>
+              <img
+                src={modal.image}
+                alt={modal.title}
+                className="w-full max-h-[60vh] object-contain bg-muted"
+              />
+              <div className="p-6 space-y-2">
+                <DialogTitle className="text-lg font-bold text-foreground">
+                  {modal.title}
+                </DialogTitle>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {modal.description}
+                </p>
+              </div>
+            </>
           )}
         </DialogContent>
       </Dialog>
