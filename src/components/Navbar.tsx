@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-card">
       <div className="container mx-auto flex items-center justify-between py-4 px-4">
-        <img src={logoIcon} alt="GG Social Studio" className="h-10 w-auto" />
+        <img src={logoIcon} alt="GG Social Studio" className="h-10 w-auto brightness-150 contrast-110" />
         <a
           href="https://wa.me/5588921745781"
           target="_blank"
