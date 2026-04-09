@@ -124,7 +124,7 @@ const Portfolio = () => {
 
       {/* Modal */}
       <Dialog open={!!modal} onOpenChange={() => setModal(null)}>
-        <DialogContent className="max-w-2xl p-0 bg-primary/10 backdrop-blur-xl border-primary/20 overflow-hidden rounded-2xl gap-0 [&>button]:hidden">
+        <DialogContent className="max-w-2xl p-0 bg-card backdrop-blur-xl border-primary/30 overflow-hidden rounded-2xl gap-0 [&>button]:hidden">
           {modal && (
             <>
               <DialogClose className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors shadow-md">
@@ -134,7 +134,7 @@ const Portfolio = () => {
               <img
                 src={modal.image}
                 alt={modal.title}
-                className="w-full max-h-[60vh] object-contain bg-primary/5"
+                className="w-full max-h-[60vh] object-contain bg-muted"
               />
               <div className="p-6 space-y-2">
                 <DialogTitle className="text-lg font-bold text-foreground">
