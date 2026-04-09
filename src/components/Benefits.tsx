@@ -9,20 +9,23 @@ const items = [
 
 const Benefits = () => {
   return (
-    <section className="section-spacing">
+    <section className="section-spacing relative">
       <div className="container mx-auto max-w-4xl">
+        <div className="section-divider mb-6" />
         <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">
           Mais do que um design <span className="text-gradient">bonito</span>
         </h2>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-5">
           {items.map((item, i) => (
             <div
               key={i}
-              className="glass-card hover-card-effect rounded-xl p-6 flex items-start gap-4 animate-fade-in"
+              className="bg-card rounded-2xl p-6 flex items-start gap-4 animate-fade-in border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 group"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <CheckCircle className="w-6 h-6 text-primary shrink-0 mt-0.5" />
-              <span className="text-foreground">{item}</span>
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                <CheckCircle className="w-5 h-5 text-primary" />
+              </div>
+              <span className="text-foreground font-medium pt-2">{item}</span>
             </div>
           ))}
         </div>

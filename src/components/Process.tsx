@@ -7,22 +7,26 @@ const steps = [
 
 const Process = () => {
   return (
-    <section className="section-spacing">
-      <div className="container mx-auto max-w-4xl">
+    <section className="section-spacing relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
+      <div className="container mx-auto max-w-4xl relative z-10">
+        <div className="section-divider mb-6" />
         <h2 className="text-2xl md:text-4xl font-bold text-center mb-12">
           Como <span className="text-gradient">funciona</span>
         </h2>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-5">
           {steps.map((step, i) => (
             <div
               key={i}
-              className="glass-card hover-card-effect rounded-xl p-6 flex items-start gap-4 animate-fade-in"
+              className="bg-card rounded-2xl p-6 flex items-start gap-4 animate-fade-in border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300 group"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <span className="text-2xl font-extrabold text-primary">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className="text-foreground">{step}</span>
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                <span className="text-lg font-extrabold text-primary">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <span className="text-foreground font-medium pt-2">{step}</span>
             </div>
           ))}
         </div>
