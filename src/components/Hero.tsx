@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import logoFull from "@/assets/logo-full.png";
+import logoFull from "@/assets/logo_completa.png";
 
 const Hero = () => {
   return (

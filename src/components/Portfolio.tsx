@@ -1,18 +1,10 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogClose } from "@/components/ui/dialog";
 import { ArrowLeft } from "lucide-react";
-import beautyPost from "@/assets/portfolio/beauty-post.jpg";
-import beautyStory1 from "@/assets/portfolio/beauty-story1.jpg";
-import beautyStory2 from "@/assets/portfolio/beauty-story2.jpg";
-import legalPost from "@/assets/portfolio/legal-post.jpg";
-import legalStory1 from "@/assets/portfolio/legal-story1.jpg";
-import legalStory2 from "@/assets/portfolio/legal-story2.jpg";
-import foodPost from "@/assets/portfolio/food-post.jpg";
-import foodStory1 from "@/assets/portfolio/food-story1.jpg";
-import foodStory2 from "@/assets/portfolio/food-story2.jpg";
-import fitnessPost from "@/assets/portfolio/fitness-post.jpg";
-import fitnessStory1 from "@/assets/portfolio/fitness-story1.jpg";
-import fitnessStory2 from "@/assets/portfolio/fitness-story2.jpg";
+import belezaImage from "@/assets/portfolio/beleza.png";
+import juridicoImage from "@/assets/portfolio/juridico.png";
+import gastronomiaImage from "@/assets/portfolio/gastronomia.png";
+import academiaImage from "@/assets/portfolio/academia.png";
 
 interface ModalData {
   image: string;
@@ -24,32 +16,28 @@ const niches = [
   {
     label: "💄 Beleza",
     name: "Glow Studio",
-    post: beautyPost,
-    stories: [beautyStory1, beautyStory2],
+    image: belezaImage,
     caption: "Posts que deixam seu perfil mais profissional",
     description: "Identidade visual completa para o segmento de beleza — posts e stories com estética sofisticada, cores harmoniosas e tipografia elegante para transmitir confiança e atrair novas clientes.",
   },
   {
     label: "⚖️ Jurídico",
     name: "Corporate",
-    post: legalPost,
-    stories: [legalStory1, legalStory2],
+    image: juridicoImage,
     caption: "Design que organiza e valoriza seu feed",
     description: "Comunicação visual séria e profissional para escritórios de advocacia — layouts limpos, paleta sóbria e tipografia que transmite autoridade e credibilidade no digital.",
   },
   {
     label: "🍔 Gastronomia",
     name: "Burguer",
-    post: foodPost,
-    stories: [foodStory1, foodStory2],
+    image: gastronomiaImage,
     caption: "Visual pensado para atrair clientes",
     description: "Artes vibrantes e apetitosas para o ramo gastronômico — composições que destacam os produtos, despertam o desejo e aumentam o engajamento do perfil.",
   },
   {
     label: "🏋️ Academia",
     name: "Wellness",
-    post: fitnessPost,
-    stories: [fitnessStory1, fitnessStory2],
+    image: academiaImage,
     caption: "Posts que deixam seu perfil mais profissional",
     description: "Design energético e motivacional para academias e personal trainers — visuais impactantes com foco em resultados, movimento e estilo de vida saudável.",
   },
@@ -58,10 +46,10 @@ const niches = [
 const Portfolio = () => {
   const [modal, setModal] = useState<ModalData | null>(null);
 
-  const openModal = (image: string, niche: typeof niches[0], type: string) => {
+  const openModal = (image: string, niche: typeof niches[0]) => {
     setModal({
       image,
-      title: `${niche.label} — ${niche.name}${type !== "Post" ? ` (${type})` : ""}`,
+      title: `${niche.label} — ${niche.name}`,
       description: niche.description,
     });
   };
@@ -90,32 +78,18 @@ const Portfolio = () => {
                 <p className="text-sm text-muted-foreground">{niche.caption}</p>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-end">
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
                 <div
-                  className="col-span-2 rounded-2xl overflow-hidden border border-border/60 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 cursor-pointer group"
-                  onClick={() => openModal(niche.post, niche, "Post")}
+                  className="rounded-2xl overflow-hidden border border-border/60 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 cursor-pointer group"
+                  onClick={() => openModal(niche.image, niche)}
                 >
                   <img
-                    src={niche.post}
-                    alt={`Post ${niche.name}`}
+                    src={niche.image}
+                    alt={`${niche.label} — ${niche.name}`}
                     loading="lazy"
                     className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                {niche.stories.map((story, j) => (
-                  <div
-                    key={j}
-                    className="rounded-2xl overflow-hidden border border-border/60 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 cursor-pointer group"
-                    onClick={() => openModal(story, niche, `Story ${j + 1}`)}
-                  >
-                    <img
-                      src={story}
-                      alt={`Story ${niche.name} ${j + 1}`}
-                      loading="lazy"
-                      className="w-full aspect-[9/16] object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                ))}
               </div>
             </div>
           ))}
